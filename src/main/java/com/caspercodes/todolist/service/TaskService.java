@@ -74,7 +74,7 @@ public class TaskService {
         Pageable pageable = PageRequest.of(page, limit);
         Page<Task> taskPage = taskRepository.findByUser(user, pageable);
 
-        // Map tasks to task responses
+
         Page<TaskResponse> taskResponsePage = taskPage.map(this::mapToTaskResponse);
 
         return new PagedTaskResponse(

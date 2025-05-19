@@ -22,7 +22,7 @@ public class UserService {
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
 
-    public TokenResponse register(UserRegisterRequest request) {
+    public UserResponse register(UserRegisterRequest request) {
 
         if (userRepository.existsByEmailIgnoreCase(request.getEmail())) {
             throw new IllegalArgumentException("Email already in use");
@@ -41,8 +41,14 @@ public class UserService {
                 .authorities("USER")
                 .build();
 
-        String token = jwtService.generateToken(userDetails);
-        return new TokenResponse(token);
+//        String token = jwtService.generateToken(userDetails);
+//        return new TokenResponse(token);
+
+        return UserResponse.builder()
+                .id(user.getId())
+                .name(user.getName())
+                .email(user.getEmail())
+                .build();
     }
 
     public TokenResponse login(UserLoginRequest request) {

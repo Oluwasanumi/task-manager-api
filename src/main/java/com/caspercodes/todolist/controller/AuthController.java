@@ -3,6 +3,7 @@ package com.caspercodes.todolist.controller;
 import com.caspercodes.todolist.dto.TokenResponse;
 import com.caspercodes.todolist.dto.UserLoginRequest;
 import com.caspercodes.todolist.dto.UserRegisterRequest;
+import com.caspercodes.todolist.dto.UserResponse;
 import com.caspercodes.todolist.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -18,9 +19,9 @@ public class AuthController {
     private final UserService userService;
 
     @PostMapping("/register")
-    public ResponseEntity<TokenResponse> register(@Valid @RequestBody UserRegisterRequest request) {
-        TokenResponse tokenResponse = userService.register(request);
-        return ResponseEntity.ok(tokenResponse);
+        public ResponseEntity<UserResponse> register(@Valid @RequestBody UserRegisterRequest request) {
+        UserResponse userResponse = userService.register(request);
+        return ResponseEntity.ok(userResponse);
     }
 
     @PostMapping("/login")
