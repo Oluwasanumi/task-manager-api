@@ -1,4 +1,4 @@
-# Todo List API
+# Task Manager API
 
 A RESTful API for managing a todo list with user authentication.
 
